@@ -1,0 +1,30 @@
+services:
+  backend:
+    build: ./backend
+    container_name: tasks-backend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      # /data is a mounted volume, kept separate from the app code copied
+      # into the image so the SQLite file survives container rebuilds.
+      DATABASE_URL: "file:/data/dev.db"
+      PORT: "3000"
+      FRONTEND_URL: "http://localhost:5173"
+    volumes:
+      - backend-data:/data
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_URL: "http://localhost:3000/api"
+    container_name: tasks-frontend
+    restart: unless-stopped
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  backend-data:
