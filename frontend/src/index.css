@@ -5,9 +5,12 @@
   --surface: #fff;
   --surface-2: #f2f1f4;
   --border: #e2e0e6;
+  --border-strong: #cbc8d1;
   --accent: #6d28d9;
+  --accent-hover: #5b21b6;
   --accent-bg: rgba(109, 40, 217, 0.08);
   --danger: #b91c1c;
+  --danger-hover: #991b1b;
   --danger-bg: rgba(185, 28, 28, 0.08);
   --warning: #b45309;
   --warning-bg: rgba(180, 83, 9, 0.1);
@@ -16,6 +19,8 @@
   --shadow: rgba(0, 0, 0, 0.08) 0 4px 12px -2px;
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --dur: 150ms;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
   font: 16px/1.5 var(--sans);
   color-scheme: light dark;
@@ -33,9 +38,12 @@
     --surface: #1d1c22;
     --surface-2: #26242c;
     --border: #322f38;
+    --border-strong: #433f4c;
     --accent: #b794f6;
+    --accent-hover: #c9adf9;
     --accent-bg: rgba(183, 148, 246, 0.15);
     --danger: #f87171;
+    --danger-hover: #fca5a5;
     --danger-bg: rgba(248, 113, 113, 0.12);
     --warning: #fbbf24;
     --warning-bg: rgba(251, 191, 36, 0.14);
@@ -69,4 +77,22 @@ select,
 textarea {
   font: inherit;
   color: inherit;
+  accent-color: var(--accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
