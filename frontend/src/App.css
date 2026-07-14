@@ -80,20 +80,13 @@
   gap: 12px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-left: 4px solid var(--border);
   border-radius: 10px;
   padding: 14px 16px;
   box-shadow: var(--shadow);
 }
 
-.task-card.priority-high {
-  border-left-color: var(--danger);
-}
-.task-card.priority-medium {
-  border-left-color: #d97706;
-}
-.task-card.priority-low {
-  border-left-color: #16a34a;
+.task-card.status-completed {
+  background: var(--surface-2);
 }
 
 .task-card-main {
@@ -129,11 +122,53 @@
 }
 
 .badge {
-  padding: 2px 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 9px;
   border-radius: 999px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.badge.status-pending {
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.badge.status-in_progress {
   background: var(--accent-bg);
   color: var(--accent);
-  text-transform: capitalize;
+}
+
+.badge.status-completed {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.badge.priority-badge-low {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.badge.priority-badge-medium {
+  background: var(--warning-bg);
+  color: var(--warning);
+}
+
+.badge.priority-badge-high {
+  background: var(--danger-bg);
+  color: var(--danger);
 }
 
 .due-date {

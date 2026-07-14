@@ -26,7 +26,7 @@ export function TaskList({ tasks, onEdit, onDelete, onToggleComplete }: Props) {
   return (
     <ul className="task-list">
       {tasks.map((task) => (
-        <li key={task.id} className={`task-card priority-${task.priority}`}>
+        <li key={task.id} className={`task-card status-${task.status}`}>
           <div className="task-card-main">
             <label className="task-complete-toggle">
               <input

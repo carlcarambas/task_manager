@@ -3,11 +3,16 @@
   --text-h: #08060d;
   --bg: #fafafa;
   --surface: #fff;
+  --surface-2: #f2f1f4;
   --border: #e2e0e6;
   --accent: #6d28d9;
   --accent-bg: rgba(109, 40, 217, 0.08);
   --danger: #b91c1c;
   --danger-bg: rgba(185, 28, 28, 0.08);
+  --warning: #b45309;
+  --warning-bg: rgba(180, 83, 9, 0.1);
+  --success: #15803d;
+  --success-bg: rgba(21, 128, 61, 0.1);
   --shadow: rgba(0, 0, 0, 0.08) 0 4px 12px -2px;
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -26,11 +31,16 @@
     --text-h: #f5f4f7;
     --bg: #141317;
     --surface: #1d1c22;
+    --surface-2: #26242c;
     --border: #322f38;
     --accent: #b794f6;
     --accent-bg: rgba(183, 148, 246, 0.15);
     --danger: #f87171;
     --danger-bg: rgba(248, 113, 113, 0.12);
+    --warning: #fbbf24;
+    --warning-bg: rgba(251, 191, 36, 0.14);
+    --success: #4ade80;
+    --success-bg: rgba(74, 222, 128, 0.14);
     --shadow: rgba(0, 0, 0, 0.4) 0 4px 12px -2px;
   }
 }
