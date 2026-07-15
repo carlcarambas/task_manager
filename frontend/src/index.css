@@ -17,6 +17,7 @@
   --success: #15803d;
   --success-bg: rgba(21, 128, 61, 0.1);
   --shadow: rgba(0, 0, 0, 0.08) 0 4px 12px -2px;
+  --shadow-lg: rgba(0, 0, 0, 0.16) 0 16px 40px -8px;
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --dur: 150ms;
@@ -50,6 +51,7 @@
     --success: #4ade80;
     --success-bg: rgba(74, 222, 128, 0.14);
     --shadow: rgba(0, 0, 0, 0.4) 0 4px 12px -2px;
+    --shadow-lg: rgba(0, 0, 0, 0.5) 0 16px 40px -8px;
   }
 }
 

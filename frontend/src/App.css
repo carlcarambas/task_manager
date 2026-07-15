@@ -311,6 +311,7 @@
   justify-content: center;
   padding: 40px 16px;
   overflow-y: auto;
+  animation: overlay-in var(--dur) var(--ease);
 }
 
 .modal {
@@ -319,13 +320,38 @@
   padding: 24px;
   width: 100%;
   max-width: 460px;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-lg);
+  animation: modal-in 200ms var(--ease);
+}
+
+@keyframes overlay-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal {
+    animation: overlay-in var(--dur) var(--ease);
+  }
 }
 
 .task-form {
   display: flex;
   flex-direction: column;
   gap: 14px;
+}
+
+.task-form h2 {
+  margin: 0;
+  font-size: 19px;
 }
 
 .task-form label {
