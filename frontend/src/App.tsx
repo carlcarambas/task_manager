@@ -37,6 +37,9 @@ export default function App() {
   const updateQuery = (patch: Partial<TaskQuery>) =>
     setQuery((q) => ({ ...q, ...patch, page: 'page' in patch ? patch.page! : 1 }));
 
+  const hasActiveFilters = Boolean(query.search || query.status || query.priority);
+  const clearFilters = () => setQuery(DEFAULT_QUERY);
+
   const openCreateForm = () => {
     setEditingTask(undefined);
     setMutationError(null);
@@ -97,18 +100,35 @@ export default function App() {
 
       <TaskFilters query={query} onChange={updateQuery} />
 
-      {mutationError && <p className="banner error-banner">{mutationError}</p>}
+      {mutationError && (
+        <p className="banner error-banner" role="alert">
+          {mutationError}
+        </p>
+      )}
 
-      {loading && <p className="loading-state">Loading tasks...</p>}
-      {error && !loading && <p className="banner error-banner">{error}</p>}
+      {loading && (
+        <ul className="skeleton-list" aria-label="Loading tasks" aria-live="polite">
+          {Array.from({ length: 4 }, (_, i) => (
+            <li key={i} className="skeleton-card" />
+          ))}
+        </ul>
+      )}
+      {error && !loading && (
+        <p className="banner error-banner" role="alert">
+          {error}
+        </p>
+      )}
 
       {!loading && !error && result && (
         <>
           <TaskList
             tasks={result.data}
+            hasActiveFilters={hasActiveFilters}
             onEdit={openEditForm}
             onDelete={handleDelete}
             onToggleComplete={handleToggleComplete}
+            onClearFilters={clearFilters}
+            onCreate={openCreateForm}
           />
           <Pagination
             page={result.page}

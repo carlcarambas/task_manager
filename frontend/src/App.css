@@ -1,7 +1,7 @@
 .app {
   max-width: 860px;
   margin: 0 auto;
-  padding: 24px 20px 64px;
+  padding: 32px 20px 64px;
 }
 
 .app-header {
@@ -9,11 +9,12 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .app-header h1 {
-  font-size: 28px;
+  font-size: 26px;
+  letter-spacing: -0.01em;
   margin: 0;
 }
 
@@ -39,7 +40,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .filters input[type='search'] {
@@ -77,11 +78,46 @@
   color: var(--danger);
 }
 
-.loading-state,
 .empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
   color: var(--text);
-  padding: 32px 0;
+  padding: 56px 20px;
   text-align: center;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-2);
+}
+
+.empty-state p {
+  margin: 0;
+  max-width: 40ch;
+}
+
+.empty-state button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 600;
+  transition: background-color var(--dur) var(--ease);
+}
+
+.empty-state button:hover {
+  background: var(--accent-hover);
+}
+
+.empty-state button.secondary {
+  background: transparent;
+  color: var(--text-h);
+  border: 1px solid var(--border-strong);
+}
+
+.empty-state button.secondary:hover {
+  background: var(--surface);
 }
 
 .task-list {
@@ -381,6 +417,45 @@
 .form-actions button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+.skeleton-list {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skeleton-card {
+  height: 72px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: linear-gradient(
+    100deg,
+    var(--surface-2) 40%,
+    var(--surface) 50%,
+    var(--surface-2) 60%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-card {
+    animation: none;
+    background: var(--surface-2);
+  }
 }
 
 @media (max-width: 520px) {

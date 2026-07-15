@@ -2,9 +2,12 @@ import type { Task } from '../types';
 
 interface Props {
   tasks: Task[];
+  hasActiveFilters: boolean;
   onEdit: (task: Task) => void;
   onDelete: (task: Task) => void;
   onToggleComplete: (task: Task) => void;
+  onClearFilters: () => void;
+  onCreate: () => void;
 }
 
 const STATUS_LABEL: Record<Task['status'], string> = {
@@ -18,9 +21,31 @@ function formatDate(value?: string) {
   return new Date(value).toLocaleDateString();
 }
 
-export function TaskList({ tasks, onEdit, onDelete, onToggleComplete }: Props) {
+export function TaskList({
+  tasks,
+  hasActiveFilters,
+  onEdit,
+  onDelete,
+  onToggleComplete,
+  onClearFilters,
+  onCreate,
+}: Props) {
   if (tasks.length === 0) {
-    return <p className="empty-state">No tasks match the current filters.</p>;
+    return hasActiveFilters ? (
+      <div className="empty-state">
+        <p>No tasks match your filters. Try a different search or clear filters to see everything.</p>
+        <button type="button" className="secondary" onClick={onClearFilters}>
+          Clear filters
+        </button>
+      </div>
+    ) : (
+      <div className="empty-state">
+        <p>No tasks yet. Create your first one to start tracking work.</p>
+        <button type="button" onClick={onCreate}>
+          + New task
+        </button>
+      </div>
+    );
   }
 
   return (
