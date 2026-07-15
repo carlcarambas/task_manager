@@ -108,13 +108,11 @@ Validation errors return `400` with a message array. A missing or nonexistent ta
 
 ## Time spent
 
-_Fill in honestly before submitting — this section is part of the grading rubric._
-
 | Area | Time |
 |---|---|
-| Backend (API, validation, Prisma schema) | |
-| Frontend (UI, forms, state) | |
-| Docker Compose setup | |
-| Tests | |
-| README / docs | |
-| Debugging / polish | |
+| Backend (API, validation, Prisma schema) | 1 day|
+| Frontend (UI, forms, state) | 1 day |
+| Docker Compose setup | 1/2 day |
+| Tests | 1/2 day |
+| README / docs | 1/2 day |
+| Debugging / polish | 1/2 day |
